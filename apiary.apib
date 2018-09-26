@@ -1,0 +1,55 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Target
+
+Target project.
+
+## Users Collection [/api/v1/users]
+For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other'__
+
+### Signup [POST]
+
++ Request (application/json)
+    + Body
+
+            {
+              "user":
+                {
+                  "username": "test",
+                  "email": "test@gmail.com",
+                  "name" : "Test",
+                  "gender": "female",
+                  "password": "password",
+                  "password_confirmation": "password"
+                }
+            }
+
+
++ Response 422
+
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: -abG_2b-LZMm_mJxz6dlGg
+            client: SOn5zDcJF_pkmGvTF_5eMQ
+            expiry: 1601058505
+            uid: test@test.com
+
+
+    + Body
+
+            {
+              "user": {
+                "id": 3,
+                "provider": "email",
+                "uid": "test@gmail.com",
+                "allow_password_change": false,
+                "name": "Test",
+                "email": "test@gmail.com",
+                "created_at": "2018-09-25T18:28:25.716Z",
+                "updated_at": "2018-09-25T18:28:25.834Z",
+                "gender": "female"
+              }
+            }
