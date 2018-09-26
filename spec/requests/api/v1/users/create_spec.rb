@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'faker'
 
-RSpec.shared_examples 'unsuccessful response' do
+shared_examples 'unsuccessful response' do
   it 'does not return a successful response' do
     post user_registration_path, params: params, as: :json
     expect(response).to have_http_status(:unprocessable_entity)
@@ -41,90 +41,75 @@ describe 'POST api/v1/users', type: :request do
     end
 
     context 'when email is not correct' do
+      let(:params) do
+        {
+          user: attributes_for(:user, email: 'invalid_email')
+        }
+      end
+
       it 'does not create a user' do
-        params[:user][:email] = 'invalid_email'
         expect do
           post user_registration_path, params: params, as: :json
         end.not_to change(User, :count)
       end
 
-      context 'does not return a successful response' do
-        let(:params) do
-          {
-            user: attributes_for(:user, email: 'invalid_email')
-          }
-        end
-        it_behaves_like 'unsuccessful response'
-      end
+      it_behaves_like 'unsuccessful response'
     end
 
     context 'when the password is incorrect' do
-      let(:new_user)              { User.find_by_email(params[:user][:email]) }
-
+      let(:new_user) { User.find_by_email(params[:user][:email]) }
+      let(:params) do
+        {
+          user: attributes_for(:user, password: 'short', password_confirmation: 'short')
+        }
+      end
       it 'does not create a user' do
-        params[:user][:password] = 'short'
-        params[:user][:password_confirmation] = 'short'
         post user_registration_path, params: params, as: :json
 
         expect(new_user).to be_nil
       end
 
-      context 'does not return a successful response' do
-        let(:params) do
-          {
-            user: attributes_for(:user, password: 'short', password_confirmation: 'short')
-          }
-        end
-        it_behaves_like 'unsuccessful response'
-      end
+      it_behaves_like 'unsuccessful response'
     end
 
     context 'when passwords do not match' do
-      let(:new_user)              { User.find_by_email(params[:user][:email]) }
+      let(:new_user) { User.find_by_email(params[:user][:email]) }
+      let(:params) do
+        {
+          user: attributes_for(:user, password: 'shouldmatch', password_confirmation: 'dontmatch')
+        }
+      end
 
       it 'does not create a user' do
-        params[:user][:password] = 'shouldmatch'
-        params[:user][:password_confirmation] = 'dontmatch'
         post user_registration_path, params: params, as: :json
         expect(new_user).to be_nil
       end
 
-      context 'does not return a successful response' do
-        let(:params) do
-          {
-            user: attributes_for(:user, password: 'shouldmatch', password_confirmation: 'dontmatch')
-          }
-        end
-        it_behaves_like 'unsuccessful response'
-      end
+      it_behaves_like 'unsuccessful response'
     end
 
     context 'when name is blank' do
-      let(:new_user)              { User.find_by_email(params[:user][:email]) }
+      let(:new_user) { User.find_by_email(params[:user][:email]) }
+      let(:params) do
+        {
+          user: attributes_for(:user, name: '')
+        }
+      end
 
       it 'does not create a user' do
-        params[:user][:name] = ''
         post user_registration_path, params: params, as: :json
         expect(new_user).to be_nil
       end
 
-      context 'does not return a succesful response' do
-        let(:params) do
-          {
-            user: attributes_for(:user, name: '')
-          }
-        end
-        it_behaves_like 'unsuccessful response'
-      end
+      it_behaves_like 'unsuccessful response'
     end
 
     context 'when gender is not valid' do
-      let(:new_user)              { User.find_by_email(params[:user][:email]) }
+      let(:new_user) { User.find_by_email(params[:user][:email]) }
 
       it 'does not create a user' do
         params[:user][:gender] = 'abc'
-        expect { post user_registration_path, params: params, as: :json }
-          .to raise_error(ArgumentError)
+        expect(new_user).to be_nil
       end
     end
   end

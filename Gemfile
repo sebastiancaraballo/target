@@ -41,7 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails', '~> 3.8.0'
-  gem 'rspec-json_expectations'
+  gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'faker', '~> 1.7.3'
 end
 
