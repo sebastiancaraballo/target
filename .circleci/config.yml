@@ -39,8 +39,8 @@ jobs:
       # Database setup
       - run: cp .circleci/database.yml config/database.yml
       - run: cp .circleci/application.yml config/application.yml
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: RAILS_ENV=test bundle exec rake db:create
+      - run: RAILS_ENV=test bundle exec rake db:schema:load
 
       # run tests!
       - run:

@@ -36,7 +36,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+describe User, type: :model do
   let(:attrs) { attributes_for(:user) }
 
   describe 'user validations' do
