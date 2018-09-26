@@ -8,7 +8,7 @@ Target project.
 ## Users Collection [/api/v1/users]
 For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other'__
 
-### Signup [POST]
+### Sign Up [POST]
 
 + Request (application/json)
     + Body
@@ -17,16 +17,13 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
               "user":
                 {
                   "username": "test",
-                  "email": "test@gmail.com",
+                  "email": "test@test.com",
                   "name" : "Test",
                   "gender": "female",
                   "password": "password",
                   "password_confirmation": "password"
                 }
             }
-
-
-+ Response 422
 
 
 + Response 200 (application/json)
@@ -42,16 +39,84 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
 
             {
               "user": {
-                "id": 3,
+                "id": 1,
                 "provider": "email",
-                "uid": "test@gmail.com",
+                "uid": "test@test.com",
                 "allow_password_change": false,
                 "name": "Test",
-                "email": "test@gmail.com",
+                "email": "test@test.com",
                 "created_at": "2018-09-25T18:28:25.716Z",
                 "updated_at": "2018-09-25T18:28:25.834Z",
                 "gender": "female"
               }
+            }
+
++ Response 422
+
+## Log In [/api/v1/users/sign_in]
+
+### Log In [POST]
+
++ Request (application/json)
+
+    + Body
+            {
+              "user":
+                {
+                  "email": "test@test.com",
+                  "password": "password"
+                }
+            }
+
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
+    + Body
+
+            {
+              "user": {
+                "id": 1,
+                "provider": "email",
+                "uid": "test@test.com",
+                "allow_password_change": false,
+                "name": "Test",
+                "email": "test@test.com",
+                "created_at": "2018-09-25T18:28:25.716Z",
+                "updated_at": "2018-09-25T18:28:25.834Z",
+                "gender": "female"
+              }
+            }
+
++ Response 401
+
+## Log out [/api/v1/users/sign_out]
+
+### Log out [DELETE]
+
++ Request (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
++ Response 200 (application/json)
+    + Body
+            {
+              "success": true
+            }
+
++ Response 404
+    + Body
+            {
+              "error": "User was not found or was not logged in."
             }
 
 ## Reset password [/api/v1/users/password]
