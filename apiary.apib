@@ -53,3 +53,85 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                 "gender": "female"
               }
             }
+
+## Reset password [/api/v1/users/password]
+
+https://github.com/lynndylanhurley/devise_token_auth/wiki/Reset-Password-Flow
+
+### Reset password [POST]
+
+Use this route to send a password reset confirmation email
+
++ Request (application/json)
+    + Body
+
+            {
+              "email": "test@test.com",
+              "redirect_url": "http://www.example.com"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "success": true,
+              "message": "An email has been sent to 'example@mail.com' containing instructions for resetting your password."
+            }
+
+### Reset password [PUT]
+
+Use this route to change user's passwords
+
++ Request (application/json)
+    + Headers
+
+            access-token: -abG_2b-LZMm_mJxz6dlGg
+            client: SOn5zDcJF_pkmGvTF_5eMQ
+            uid: test@test.com
+
+    + Body
+
+            {
+              "password": "12345678",
+              "password_confirmation": "12345678"
+            }
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
+    + Attributes (Profile Response)
+
+## Edit reset password [/api/v1/users/password/edit]
+
+### Edit reset password [GET]
+
+This route is the destination URL for password reset confirmation
+
++ Request (application/json)
+    + Parameters
+        + reset_password_token (string, required)
+        + redirect_url (string)
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
+
+## Profile Response (object)
++ id: 100 (number)
++ email: test@test.com (string)
++ provider: email (enum[string])
++ uid: test@test.com (string)
++ name: Test (string)
++ created_at: 2018-09-25T18:28:25.834Z (string)
++ updated_at": 2018-09-25T18:28:25.834Z (string)
++ "gender": "female" (string)
