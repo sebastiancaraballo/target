@@ -37,10 +37,8 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  let(:attrs) { attributes_for(:user) }
-
   describe 'user validations' do
-    subject(:user) { User.new(email: attrs['email'], password: attrs['password']) }
+    subject(:user) { build(:user, email: 'email') }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_presence_of(:name) }

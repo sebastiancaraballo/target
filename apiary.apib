@@ -190,6 +190,35 @@ This route is the destination URL for password reset confirmation
             expiry: 1489009792
             uid: test@test.com
 
+## Topics Collection
+
+### Get Topics
+
++ Request (application/json)
+    + Headers
+            access-token: 0JfjvKLv7NR3_d10350u2w
+            client: pBx8B5nowYy3L-EXueP6nQ
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "topics": 
+                [
+                  {
+                      "id": 1,
+                      "label": "Football"
+                  }
+                ]
+            }
+
++ Response 401
+    + Body
+            {
+              "error": "You need to sign in or sign up before continuing."
+            }
 
 ## Profile Response (object)
 + id: 100 (number)
