@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe 'POST api/v1/users/sign_in', type: :request do
-  let(:password) { 'password' }
-  let(:user) { create(:user, password: password) }
+  let(:user) { create(:user) }
 
   context 'with correct params' do
     before do
@@ -10,7 +9,7 @@ describe 'POST api/v1/users/sign_in', type: :request do
         user:
           {
             email: user.email,
-            password: password
+            password: user.password
           }
       }
       post new_user_session_path, params: params, as: :json

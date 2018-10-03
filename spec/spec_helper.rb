@@ -12,6 +12,7 @@ FactoryBot.reload
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|
+  config.include RSpec::JsonExpectations::Matchers
   config.include Helpers
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

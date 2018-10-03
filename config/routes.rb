@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       devise_scope :user do
         get :status, to: 'api#status'
       end
+
+      resources :topics, only: :index
     end
   end
 end

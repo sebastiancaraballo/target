@@ -20,7 +20,6 @@ describe 'POST api/v1/users', type: :request do
 
     it 'returns a succesful response' do
       post user_registration_path, params: params, as: :json
-
       expect(response).to have_http_status(:success)
     end
 
