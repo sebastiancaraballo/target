@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :topic do
-    label { Faker::HarryPotter.character }
+    label { Faker::Lorem.word }
   end
 end

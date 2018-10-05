@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'faker'
 
 shared_examples 'unsuccessful response' do
   it 'does not return a successful response' do
