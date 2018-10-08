@@ -37,7 +37,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  describe 'user validations' do
+  describe 'validations' do
     subject(:user) { build(:user, email: 'email') }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }

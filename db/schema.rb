@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_175803) do
+ActiveRecord::Schema.define(version: 2018_10_04_133147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "spots", force: :cascade do |t|
+    t.string "title", null: false
+    t.decimal "latitude", null: false
+    t.decimal "longitude", null: false
+    t.decimal "radius", null: false
+    t.bigint "user_id"
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_spots_on_topic_id"
+    t.index ["user_id"], name: "index_spots_on_user_id"
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string "label", null: false
@@ -37,6 +50,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_175803) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name"
+    t.string "nickname"
+    t.string "image"
     t.string "email"
     t.json "tokens"
     t.datetime "created_at", null: false
@@ -48,4 +63,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_175803) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "spots", "topics"
+  add_foreign_key "spots", "users"
 end

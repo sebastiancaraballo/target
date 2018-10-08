@@ -229,3 +229,36 @@ This route is the destination URL for password reset confirmation
 + created_at: 2018-09-25T18:28:25.834Z (string)
 + updated_at": 2018-09-25T18:28:25.834Z (string)
 + "gender": "female" (string)
+
+## Spot Collection
+
+### Create Spot
+
++ Request (application/json)
+    + Headers
+            access-token: Aq0GCbYKWFA0oAbcvRzP9g
+            client: 0WPgnm5Ns79vEqh1O81Akg
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "spot": {
+                    "id": 1,
+                    "title": "spot",
+                    "latitude": "-94.5566",
+                    "longitude": "-94.5566",
+                    "radius": "27384.4",
+                    "topic_id": 1
+                }
+            }
+
++ Response 401
+    + Body
+            {
+                "errors": [
+                    "You need to sign in or sign up before continuing."
+                ]
+            }

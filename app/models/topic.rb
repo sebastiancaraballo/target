@@ -6,6 +6,8 @@
 #  label :string           not null
 #
 
-class Topic < ActiveRecord::Base
+class Topic < ApplicationRecord
+  has_many :spots, dependent: :destroy
+
   validates :label, presence: true
 end

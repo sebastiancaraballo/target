@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
 
       resources :topics, only: :index
+      resources :spots, only: :create
     end
   end
 end
