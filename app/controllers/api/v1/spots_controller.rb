@@ -5,6 +5,10 @@ module Api
         @spot = current_user.spots.create!(spot_params)
       end
 
+      def index
+        @spots = current_user.spots
+      end
+
       private
 
       def spot_params

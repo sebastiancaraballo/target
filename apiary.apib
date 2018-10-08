@@ -192,7 +192,7 @@ This route is the destination URL for password reset confirmation
 
 ## Topics Collection
 
-### Get Topics
+### Get Topics [/api/v1/topics] [GET]
 
 + Request (application/json)
     + Headers
@@ -220,19 +220,9 @@ This route is the destination URL for password reset confirmation
               "error": "You need to sign in or sign up before continuing."
             }
 
-## Profile Response (object)
-+ id: 100 (number)
-+ email: test@test.com (string)
-+ provider: email (enum[string])
-+ uid: test@test.com (string)
-+ name: Test (string)
-+ created_at: 2018-09-25T18:28:25.834Z (string)
-+ updated_at": 2018-09-25T18:28:25.834Z (string)
-+ "gender": "female" (string)
+## Spot Collection [/api/v1/spots]
 
-## Spot Collection
-
-### Create Spot
+### Create Spot [POST]
 
 + Request (application/json)
     + Headers
@@ -262,3 +252,46 @@ This route is the destination URL for password reset confirmation
                     "You need to sign in or sign up before continuing."
                 ]
             }
+
+### Get Spots [GET]
+
++ Request (application/json)
+    + Headers
+            access-token: Aq0GCbYKWFA0oAbcvRzP9g
+            client: 0WPgnm5Ns79vEqh1O81Akg
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "spots": [
+                    {
+                        "id": 1,
+                        "title": "spot",
+                        "latitude": "-94.5566",
+                        "longitude": "-94.5566",
+                        "radius": "27384.4",
+                        "topic_id": 1
+                    }
+                ]
+            }
+
++ Response 401
+    + Body
+            {
+                "errors": [
+                    "You need to sign in or sign up before continuing."
+                ]
+            }
+
+## Profile Response (object)
++ id: 100 (number)
++ email: test@test.com (string)
++ provider: email (enum[string])
++ uid: test@test.com (string)
++ name: Test (string)
++ created_at: 2018-09-25T18:28:25.834Z (string)
++ updated_at": 2018-09-25T18:28:25.834Z (string)
++ "gender": "female" (string)
