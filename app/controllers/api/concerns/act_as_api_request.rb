@@ -4,9 +4,9 @@ module Api
       extend ActiveSupport::Concern
 
       included do
+        protect_from_forgery with: :exception
         skip_before_action :verify_authenticity_token
         before_action :skip_session_storage
-        protect_from_forgery with: :exception
       end
 
       def skip_session_storage

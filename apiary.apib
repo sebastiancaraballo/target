@@ -286,6 +286,25 @@ This route is the destination URL for password reset confirmation
                 ]
             }
 
+### Destroy a spot [DELETE] [/api/v1/spots/{id}]
+
++ Request (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
++ Response 204 (application/json)
+
++ Response 404
+    + Body
+            {
+              "error": "Couldn't find the record"
+            }
+
+
 ## Profile Response (object)
 + id: 100 (number)
 + email: test@test.com (string)

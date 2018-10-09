@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       end
 
       resources :topics, only: :index
-      resources :spots, only: %i[create index]
+      resources :spots, only: %i[create index destroy]
     end
   end
 end
