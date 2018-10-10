@@ -33,5 +33,20 @@ describe Spot, type: :model do
   describe 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:topic) }
+
+    context 'when exceeding 10th spot creation limit' do
+      let(:user)    { create(:user) }
+      let!(:spots)  { create_list(:spot, 10, user_id: user.id) }
+      let(:spot)    { build(:spot, user_id: user.id) }
+
+      it 'is not valid' do
+        expect(spot).to_not be_valid
+      end
+
+      it 'returns error message' do
+        spot.valid?
+        expect(spot.errors[:base]).to include I18n.t('api.errors.spot_limit')
+      end
+    end
   end
 end

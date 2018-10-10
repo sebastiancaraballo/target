@@ -26,3 +26,4 @@ en:
       not_found: "Couldn't find the record"
       missing_param: 'A required param is missing'
       invalid_content_type: 'Invalid content type header'
+      spot_limit: "Users can create a maximum of #{Spot::MAX_SPOTS_COUNT} spots"

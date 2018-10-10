@@ -19,9 +19,19 @@
 #
 
 class Spot < ApplicationRecord
+  MAX_SPOTS_COUNT = ENV['SPOTS_COUNT_LIMIT'].to_i
+
   belongs_to :user
   belongs_to :topic
 
   validates :title, :latitude, :longitude, :radius, presence: true
   validates :radius, numericality: { greater_than: 0 }
+  validate  :spots_limit
+
+  private
+
+  def spots_limit
+    return unless user.spots.count >= MAX_SPOTS_COUNT
+    errors.add(:base, I18n.t('api.errors.spot_limit'))
+  end
 end
