@@ -9,6 +9,10 @@ module Api
         @spots = current_user.spots
       end
 
+      def destroy
+        current_user.spots.destroy(params[:id])
+      end
+
       private
 
       def spot_params
