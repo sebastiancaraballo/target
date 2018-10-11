@@ -40,9 +40,9 @@ describe 'POST api/v1/spots', type: :request do
       post api_v1_spots_path, params: params, headers: auth_headers, as: :json
       expect(json[:spot]).to include_json(
         id: spot.id,
-        latitude: format('%.6g', format('%.6f', spot.latitude)),
-        longitude: format('%.6g', format('%.6f', spot.longitude)),
-        radius: format('%.1f', spot.radius),
+        latitude: spot.latitude,
+        longitude: spot.longitude,
+        radius: spot.radius,
         topic_id: spot.topic_id
       )
     end
