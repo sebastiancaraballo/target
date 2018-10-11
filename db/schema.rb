@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_133147) do
+ActiveRecord::Schema.define(version: 2018_10_11_150040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "spots", force: :cascade do |t|
     t.string "title", null: false
-    t.decimal "latitude", null: false
-    t.decimal "longitude", null: false
-    t.decimal "radius", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.float "radius", null: false
     t.bigint "user_id"
     t.bigint "topic_id"
     t.datetime "created_at", null: false

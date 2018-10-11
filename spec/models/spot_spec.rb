@@ -4,9 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
-#  latitude   :decimal(, )      not null
-#  longitude  :decimal(, )      not null
-#  radius     :decimal(, )      not null
+#  latitude   :float            not null
+#  longitude  :float            not null
+#  radius     :float            not null
 #  user_id    :integer
 #  topic_id   :integer
 #  created_at :datetime         not null

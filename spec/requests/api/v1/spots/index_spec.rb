@@ -11,9 +11,9 @@ describe 'GET api/v1/spots', type: :request do
     spots.each do |spot|
       expect(json).to include_json(
         spots: UnorderedArray(id: spot.id, title: spot.title,
-                              latitude: format('%.6g', format('%.6f', spot.latitude)),
-                              longitude: format('%.6g', format('%.6f', spot.longitude)),
-                              radius: format('%.1f', spot.radius),
+                              latitude: spot.latitude,
+                              longitude: spot.longitude,
+                              radius: spot.radius,
                               topic_id: spot.topic_id)
       )
     end
