@@ -14,9 +14,9 @@ describe 'POST api/v1/spots', type: :request do
     end
   end
 
-  let!(:user)   { create(:user) }
-  let!(:topic)  { create(:topic) }
-  let(:spot)    { Spot.last }
+  let(:user)   { create(:user) }
+  let(:topic)  { create(:topic) }
+  let(:spot)   { Spot.last }
 
   context 'with correct params' do
     let(:params) do
@@ -90,6 +90,22 @@ describe 'POST api/v1/spots', type: :request do
           spot: attributes_for(:spot, radius: 0, topic_id: topic.id)
         }
       end
+      it_behaves_like 'invalid params'
+    end
+
+    context 'when exceeding 10th spot creation limit' do
+      let!(:spots) { create_list(:spot, 10, user_id: user.id) }
+      let(:params) do
+        {
+          spot: attributes_for(:spot, topic_id: topic.id, user_id: user.id)
+        }
+      end
+
+      it 'returns error message' do
+        post api_v1_spots_path, params: params, headers: auth_headers, as: :json
+        expect(json[:errors][:base]).to include I18n.t('api.errors.spot_limit')
+      end
+
       it_behaves_like 'invalid params'
     end
   end
