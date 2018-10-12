@@ -20,6 +20,8 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  name                   :string
+#  nickname               :string
+#  image                  :string
 #  email                  :string
 #  tokens                 :json
 #  created_at             :datetime         not null
@@ -44,6 +46,12 @@ class User < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }
 
   has_many :spots, dependent: :destroy
+  has_many :first_matches, class_name: 'Match', foreign_key: 'first_user_id', dependent: :destroy
+  has_many :second_matches, class_name: 'Match', foreign_key: 'second_user_id', dependent: :destroy
 
   validates :name, :gender, presence: true
+
+  def matches
+    first_matches << second_matches
+  end
 end

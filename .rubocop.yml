@@ -57,6 +57,10 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 12
 
+Style/ColonMethodCall:
+  Exclude:
+    - config/initializers/geokit_config.rb
+
 Style/ExpandPathArguments:
   Exclude:
     - spec/spec_helper.rb

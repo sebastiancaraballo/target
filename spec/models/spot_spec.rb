@@ -45,7 +45,7 @@ describe Spot, type: :model do
 
       it 'returns error message' do
         spot.valid?
-        expect(spot.errors[:base]).to include I18n.t('api.errors.spot_limit')
+        expect(spot.errors[:base]).to include t('api.errors.spot_limit')
       end
     end
   end

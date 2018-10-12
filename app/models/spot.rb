@@ -24,14 +24,31 @@ class Spot < ApplicationRecord
   belongs_to :user
   belongs_to :topic
 
+  has_many :matches, dependent: :destroy
+
   validates :title, :latitude, :longitude, :radius, presence: true
   validates :radius, numericality: { greater_than: 0 }
   validate  :spots_limit
+
+  after_create :create_matches
+
+  acts_as_mappable lat_column_name: :latitude,
+                   lng_column_name: :longitude
 
   private
 
   def spots_limit
     return unless user.spots.count >= MAX_SPOTS_COUNT
-    errors.add(:base, I18n.t('api.errors.spot_limit'))
+    errors.add(:base, t('api.errors.spot_limit'))
+  end
+
+  def create_matches
+    compatible_spots = Spot.within(radius, origin: [latitude, longitude])
+                           .where(topic_id: topic_id)
+                           .where.not(user_id: user_id)
+
+    compatible_spots.each do |spot|
+      matches.create!(first_user_id: user_id, second_user_id: spot.user_id)
+    end
   end
 end
