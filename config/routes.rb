@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       devise_scope :user do
         get :status, to: 'api#status'
       end
+      namespace :user do
+        resources :matches, only: :index
+      end
 
       resources :topics, only: :index
       resources :spots, only: %i[create index destroy]

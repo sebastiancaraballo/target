@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_150040) do
+ActiveRecord::Schema.define(version: 2018_10_11_162644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "first_user_id", null: false
+    t.bigint "second_user_id", null: false
+    t.bigint "spot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_user_id"], name: "index_matches_on_first_user_id"
+    t.index ["second_user_id"], name: "index_matches_on_second_user_id"
+    t.index ["spot_id"], name: "index_matches_on_spot_id"
+  end
 
   create_table "spots", force: :cascade do |t|
     t.string "title", null: false

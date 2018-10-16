@@ -27,3 +27,4 @@ en:
       missing_param: 'A required param is missing'
       invalid_content_type: 'Invalid content type header'
       spot_limit: "Users can create a maximum of #{Spot::MAX_SPOTS_COUNT} spots"
+      not_same_user: 'Matches must be associated with two different users'

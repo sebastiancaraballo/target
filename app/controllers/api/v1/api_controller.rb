@@ -28,12 +28,12 @@ module Api
         return render_not_found(exception) if exception.cause.is_a? ActiveRecord::RecordNotFound
 
         logger.error(exception) # Report to your error managment tool here
-        render json: { error: I18n.t('api.errors.server') }, status: 500 unless performed?
+        render json: { error: t('api.errors.server') }, status: 500 unless performed?
       end
 
       def render_not_found(exception)
         logger.info(exception) # for logging
-        render json: { error: I18n.t('api.errors.not_found') }, status: :not_found
+        render json: { error: t('api.errors.not_found') }, status: :not_found
       end
 
       def render_record_invalid(exception)
@@ -43,7 +43,7 @@ module Api
 
       def render_parameter_missing(exception)
         logger.info(exception) # for logging
-        render json: { error: I18n.t('api.errors.missing_param') }, status: :unprocessable_entity
+        render json: { error: t('api.errors.missing_param') }, status: :unprocessable_entity
       end
     end
   end

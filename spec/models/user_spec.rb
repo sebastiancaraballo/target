@@ -20,6 +20,8 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  name                   :string
+#  nickname               :string
+#  image                  :string
 #  email                  :string
 #  tokens                 :json
 #  created_at             :datetime         not null
@@ -46,5 +48,19 @@ describe User, type: :model do
     it 'is not valid without a valid gender' do
       expect { build(:user, gender: 'abc') }.to raise_error(ArgumentError)
     end
+  end
+
+  describe 'associations' do
+    it { should have_many(:spots).dependent(:destroy) }
+    it {
+      should have_many(:first_matches)
+        .class_name('Match')
+        .with_foreign_key('first_user_id')
+    }
+    it {
+      should have_many(:second_matches)
+        .class_name('Match')
+        .with_foreign_key('second_user_id')
+    }
   end
 end

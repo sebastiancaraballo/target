@@ -12,4 +12,8 @@ describe Topic, type: :model do
     subject(:topic) { build :topic }
     it { is_expected.to validate_presence_of(:label) }
   end
+
+  describe 'associations' do
+    it { should have_many(:spots) }
+  end
 end
