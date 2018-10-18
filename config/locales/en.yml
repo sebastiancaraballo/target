@@ -28,3 +28,4 @@ en:
       invalid_content_type: 'Invalid content type header'
       spot_limit: "Users can create a maximum of #{Spot::MAX_SPOTS_COUNT} spots"
       not_same_user: 'Matches must be associated with two different users'
+      blank_message: 'The message must not be blank.'

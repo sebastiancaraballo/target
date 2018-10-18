@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   mount_devise_token_auth_for 'User', at: '/api/v1/users', controllers: {
     registrations:  'api/v1/registrations',
     passwords:  'api/v1/passwords',
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
       resources :topics, only: :index
       resources :spots, only: %i[create index destroy]
+      resources :conversations, only: %i[create index]
     end
   end
 end

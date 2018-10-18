@@ -7,6 +7,7 @@ require 'rspec/core'
 require 'spec_helper'
 require 'rspec/rails'
 require 'simplecov'
+require 'action_cable/testing/rspec'
 
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLE_ARTIFACTS']
