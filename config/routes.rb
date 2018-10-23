@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
       resources :topics, only: :index
       resources :spots, only: %i[create index destroy]
-      resources :conversations, only: %i[create index]
+      resources :conversations, only: %i[create index] do
+        resources :messages, only: :index
+      end
     end
   end
 end
