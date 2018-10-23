@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_162644) do
+ActiveRecord::Schema.define(version: 2018_10_17_164529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_conversations_on_match_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "first_user_id", null: false
@@ -24,6 +31,16 @@ ActiveRecord::Schema.define(version: 2018_10_11_162644) do
     t.index ["first_user_id"], name: "index_matches_on_first_user_id"
     t.index ["second_user_id"], name: "index_matches_on_second_user_id"
     t.index ["spot_id"], name: "index_matches_on_spot_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "sender_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -41,6 +58,15 @@ ActiveRecord::Schema.define(version: 2018_10_11_162644) do
 
   create_table "topics", force: :cascade do |t|
     t.string "label", null: false
+  end
+
+  create_table "user_conversations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_user_conversations_on_conversation_id"
+    t.index ["user_id"], name: "index_user_conversations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,6 +100,8 @@ ActiveRecord::Schema.define(version: 2018_10_11_162644) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "conversations", "matches"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "spots", "topics"
   add_foreign_key "spots", "users"
 end

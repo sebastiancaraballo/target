@@ -48,6 +48,8 @@ class User < ApplicationRecord
   has_many :spots, dependent: :destroy
   has_many :first_matches, class_name: 'Match', foreign_key: 'first_user_id', dependent: :destroy
   has_many :second_matches, class_name: 'Match', foreign_key: 'second_user_id', dependent: :destroy
+  has_many :user_conversations
+  has_many :conversations, through: :user_conversations, dependent: :destroy
 
   validates :name, :gender, presence: true
 

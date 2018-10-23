@@ -62,5 +62,6 @@ describe User, type: :model do
         .class_name('Match')
         .with_foreign_key('second_user_id')
     }
+    it { should have_many(:conversations).through(:user_conversations) }
   end
 end

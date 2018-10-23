@@ -342,6 +342,67 @@ This route is the destination URL for password reset confirmation
                 ]
             }
 
+## Match Conversations [/api/v1/conversations]
+
+### Create Conversation [POST]
+
++ Request (application/json)
+    + Headers
+            access-token: Aq0GCbYKWFA0oAbcvRzP9g
+            client: 0WPgnm5Ns79vEqh1O81Akg
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "conversations": [
+                    {
+                        "id": 1,
+                        "match_id": 1
+                    }
+                ]
+            }
+
++ Response 401
+    + Body
+            {
+                "errors": [
+                    "You need to sign in or sign up before continuing."
+                ]
+            }
+
+### Get Conversations [GET]
+
++ Request (application/json)
+    + Headers
+            access-token: Aq0GCbYKWFA0oAbcvRzP9g
+            client: 0WPgnm5Ns79vEqh1O81Akg
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "conversations": [
+                    {
+                        "id": 1,
+                        "match_id": 1
+                    }
+                ]
+            }
+
++ Response 401
+    + Body
+            {
+                "errors": [
+                    "You need to sign in or sign up before continuing."
+                ]
+            }
+
+# Data Structures
 
 ## Profile Response (object)
 + id: 100 (number)

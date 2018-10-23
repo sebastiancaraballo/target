@@ -60,6 +60,7 @@ group :test do
   gem 'database_cleaner', '~> 1.4.1'
   gem 'shoulda-matchers', '~> 3.1.1'
   gem 'simplecov', '~> 0.13.0', require: false
+  gem 'action-cable-testing', '~> 0.3.2'
 end
 
 
