@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe ConversationChannel, type: :channel do
-  let(:user)          { create(:user_with_conversations, conversations_count: 1) }
-  let(:conversation)  { user.conversations.last }
+  let(:user)          { create(:user) }
+  let(:other_user)    { create(:user) }
+  let(:match)         { create(:match, first_user: user, second_user: other_user) }
+  let(:conversation)  { create(:conversation, users: [user, other_user], match: match) }
   let(:message)       { 'Hello, Rails!' }
   let(:params) do
     {
@@ -46,6 +48,13 @@ describe ConversationChannel, type: :channel do
         expect { speak }.to have_broadcasted_to(conversation)
           .from_channel(ConversationChannel)
           .with(a_hash_including(content: message))
+      end
+
+      it 'increments the other user unread messages' do
+        expect do
+          speak
+          conversation.reload
+        end.to change { conversation.second_user_unread_messages }.by(1)
       end
     end
   end

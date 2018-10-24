@@ -23,6 +23,10 @@ class Match < ApplicationRecord
 
   validate :not_same_user
 
+  def first?(user)
+    first_user == user
+  end
+
   private
 
   def not_same_user

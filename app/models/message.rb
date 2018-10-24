@@ -22,8 +22,17 @@ class Message < ApplicationRecord
   validates :content, presence: true
 
   after_create_commit :broadcast_message
+  after_create_commit :increment_unread_messages_counter
 
   private
+
+  def increment_unread_messages_counter
+    if conversation.first?(sender)
+      conversation.increment!(:second_user_unread_messages)
+    else
+      conversation.increment!(:first_user_unread_messages)
+    end
+  end
 
   def broadcast_message
     ConversationChannel.broadcast_to(conversation, render_content(content))
