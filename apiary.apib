@@ -402,6 +402,37 @@ This route is the destination URL for password reset confirmation
                 ]
             }
 
+### Get Messages [GET] [/api/v1/conversations/{id}/messages]
+
++ Request (application/json)
+    + Headers
+            access-token: Aq0GCbYKWFA0oAbcvRzP9g
+            client: 0WPgnm5Ns79vEqh1O81Akg
+            uid: test@test.com
+            token-type: Bearer
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "messages": [
+                    {
+                        "id": 1,
+                        "content": "Message",
+                        "date": "2018-10-23 13:13:00 UTC"
+                        "sender_id": 1                        
+                    }
+                ]
+            }
+
++ Response 401
+    + Body
+            {
+                "errors": [
+                    "You need to sign in or sign up before continuing."
+                ]
+            }
+
 # Data Structures
 
 ## Profile Response (object)
