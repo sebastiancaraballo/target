@@ -2,10 +2,12 @@
 #
 # Table name: conversations
 #
-#  id         :integer          not null, primary key
-#  match_id   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                          :integer          not null, primary key
+#  match_id                    :integer
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  first_user_unread_messages  :integer          default(0)
+#  second_user_unread_messages :integer          default(0)
 #
 # Indexes
 #
