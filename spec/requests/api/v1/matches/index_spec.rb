@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe 'GET api/v1/user/matches', type: :request do
+describe 'GET api/v1/matches', type: :request do
   let(:user)      { create(:user) }
   let!(:matches)  { create_list(:match, 3, first_user_id: user.id) }
   before do
-    get api_v1_user_matches_path, headers: auth_headers, as: :json
+    get api_v1_matches_path, headers: auth_headers, as: :json
   end
 
   it 'returns matches' do

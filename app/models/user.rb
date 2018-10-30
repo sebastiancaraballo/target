@@ -56,4 +56,12 @@ class User < ApplicationRecord
   def matches
     first_matches << second_matches
   end
+
+  def self.from_provider(provider, user_profile)
+    where(provider: provider, uid: user_profile[:id]).first_or_create do |user|
+      user.password = Devise.friendly_token[0, 20]
+      user.name = "#{user_profile[:first_name]} #{user_profile[:last_name]}"
+      user.assign_attributes user_profile.except('id', 'first_name', 'last_name')
+    end
+  end
 end

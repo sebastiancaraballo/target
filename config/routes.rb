@@ -10,8 +10,7 @@ Rails.application.routes.draw do
     namespace :v1, defaults: { format: :json } do
       devise_scope :user do
         get :status, to: 'api#status'
-      end
-      namespace :user do
+        post 'users/facebook', to: 'sessions#facebook'
         resources :matches, only: :index
       end
 

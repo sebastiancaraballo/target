@@ -9,6 +9,8 @@ require 'rspec/rails'
 require 'simplecov'
 require 'action_cable/testing/rspec'
 
+WebMock.disable_net_connect!(allow_localhost: true)
+
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLE_ARTIFACTS']
   dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')

@@ -95,6 +95,34 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
 
 + Response 401
 
+## Facebook Log In [/api/v1/users/facebook]
+
+### Facebook Log In [POST]
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            uid: test@test.com
+
+
+    + Body
+
+            {
+              "user": {
+                "id"=>28209,
+                "provider"=>"facebook",
+                "uid"=>"987654321",
+                "allow_password_change"=>false,
+                "name"=>"Jhon Doe",
+                "email"=>"test@facebook.com",
+                "created_at"=>"2018-10-31T17:27:50.869Z",
+                "updated_at"=>"2018-10-31T17:27:50.947Z",
+                "gender"=>"male"
+              }
+            }
+
 ## Log out [/api/v1/users/sign_out]
 
 ### Log out [DELETE]
