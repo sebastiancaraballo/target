@@ -21,16 +21,29 @@ describe 'POST api/v1/users/facebook', type: :request do
   end
 
   shared_examples 'valid params' do
-    it 'returns a succesful response' do
+    before do
       post facebook_path, params: params, as: :json
+    end
+
+    it 'returns a succesful response' do
       expect(response).to have_http_status(:success)
     end
 
     it 'returns a valid client and access token' do
-      post facebook_path, params: params, as: :json
       token = response.headers['access-token']
       client = response.headers['client']
       expect(user.reload.valid_token?(token, client)).to be_truthy
+    end
+
+    it 'returns the user' do
+      expect(json[:user]).to include_json(
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        gender: user.gender,
+        provider: 'facebook',
+        uid: user.uid
+      )
     end
   end
 
