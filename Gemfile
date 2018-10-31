@@ -35,6 +35,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.4.3'
 gem 'devise_token_auth', '~> 0.1.43'
 gem 'geokit-rails', '~> 2.3', '>= 2.3.1'
+gem 'koala', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,6 +62,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1.1'
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'action-cable-testing', '~> 0.3.2'
+  gem 'webmock', '~> 3.4', '>= 3.4.2'
 end
 
 
