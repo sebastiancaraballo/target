@@ -6,9 +6,10 @@ module Api
 
       def facebook
         user_profile = FacebookService.new(params[:access_token]).profile
-        @user = User.from_provider('facebook', user_profile)
-        sign_in(:api_v1_user, @user)
-        response.headers.merge!(@user.create_new_auth_token)
+        @resource = User.from_provider('facebook', user_profile)
+        sign_in(:api_v1_user, @resource)
+        response.headers.merge!(@resource.create_new_auth_token)
+        render_create_success
       rescue ActiveRecord::RecordNotUnique
         render json: { error: I18n.t('api.errors.not_unique_user') }, status: :bad_request
       end
