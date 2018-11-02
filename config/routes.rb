@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get :status, to: 'api#status'
         post 'users/facebook', to: 'sessions#facebook'
         resources :matches, only: :index
+        resources :users, only: %i[show update]
       end
 
       resources :topics, only: :index

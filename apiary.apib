@@ -16,7 +16,6 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             {
               "user":
                 {
-                  "username": "test",
                   "email": "test@test.com",
                   "name" : "Test",
                   "gender": "female",
@@ -52,6 +51,83 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             }
 
 + Response 422
+
+
+## Update current user profile [/api/v1/users/{id}]
+
+### Update current user profile [PUT]
+
++ Request (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            uid: test@test.com
+
+    + Body
+            {
+              "user": {
+                "email": "testing@test.com",
+                "gender": "female",
+                "name": "testing"
+              }
+            }
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: testing@test.com
+
+
+     + Body
+            {
+              "user": {
+                "id": 1,
+                "email": "testing@test.com",
+                "gender": "female",
+                "name": "testing"
+              }
+            }
+
+## Get user's profile [/api/v1/users/{id}]
+
+### Get user [GET]
+
++ Request (application/json)
+    + Parameters
+        + id (integer, required)
+
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            uid: test@test.com
+
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
+
+    + Body
+            {
+              "user": {
+                "id": 1,
+                "email": "test@test.com",
+                "gender": "male",
+                "name": "test"
+              }
+            }
+
++ Response 401
+
 
 ## Log In [/api/v1/users/sign_in]
 
@@ -146,6 +222,7 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             {
               "error": "User was not found or was not logged in."
             }
+
 
 ## Reset password [/api/v1/users/password]
 
