@@ -26,6 +26,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      #ImageMagic
+      - run:
+          name: install ImageMagick dependencies
+          command: sudo apt-get update && sudo apt-get install imagemagick
+
       - run:
           name: install dependencies
           command: |
@@ -35,7 +40,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-        
+
       # Database setup
       - run: cp .circleci/database.yml config/database.yml
       - run: cp .circleci/application.yml config/application.yml
