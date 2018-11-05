@@ -5,6 +5,17 @@ describe 'PUT api/v1/users/:id', type: :request do
   let(:new_email)         { 'test2@test.com' }
   let(:new_name)          { 'Test2' }
   let(:new_gender)        { 'female' }
+  let(:image_data) do
+    Base64.encode64(File.open(
+                      File.join(
+                        Rails.root, 'spec/assets/default-avatar.png'
+                      ), &:read
+                    ))
+  end
+
+  let(:image)             { "data:image/png;base64,#{image_data}" }
+  let(:image_url)         { "/uploads/user/avatar/#{user.id}/" }
+  let(:image_filename)    { 'avatar.png' }
 
   before do
     put api_v1_user_path(user), params: params, headers: auth_headers, as: :json
@@ -13,7 +24,12 @@ describe 'PUT api/v1/users/:id', type: :request do
   context 'with valid params' do
     let(:params) do
       {
-        user: { email: new_email, name: new_name, gender: new_gender }
+        user: {
+          email: new_email,
+          name: new_name,
+          gender: new_gender,
+          avatar: image
+        }
       }
     end
 
@@ -26,6 +42,7 @@ describe 'PUT api/v1/users/:id', type: :request do
       expect(user.email).to eq(new_email)
       expect(user.name).to eq(new_name)
       expect(user.gender).to eq(new_gender)
+      expect(user.avatar.url).to eq(image_url + image_filename)
     end
 
     it 'returns the user' do
@@ -33,7 +50,16 @@ describe 'PUT api/v1/users/:id', type: :request do
         id: user.id,
         email: new_email,
         name: new_name,
-        gender: new_gender
+        gender: new_gender,
+        avatar: {
+          url: image_url + image_filename,
+          thumb: {
+            url: image_url + 'thumb_' + image_filename
+          },
+          normal: {
+            url: image_url + 'normal_' + image_filename
+          }
+        }
       )
     end
   end

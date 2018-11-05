@@ -37,6 +37,7 @@ gem 'devise_token_auth', '~> 0.1.43'
 gem 'geokit-rails', '~> 2.3', '>= 2.3.1'
 gem 'koala', '~> 3.0'
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'carrierwave-base64', '~> 2.7'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'fog-aws', '~> 3.3'
 
