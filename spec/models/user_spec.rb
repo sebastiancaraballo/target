@@ -27,6 +27,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  gender                 :integer
+#  avatar                 :string
 #
 # Indexes
 #

@@ -37,17 +37,26 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
     + Body
 
             {
-              "user": {
-                "id": 1,
-                "provider": "email",
-                "uid": "test@test.com",
-                "allow_password_change": false,
-                "name": "Test",
-                "email": "test@test.com",
-                "created_at": "2018-09-25T18:28:25.716Z",
-                "updated_at": "2018-09-25T18:28:25.834Z",
-                "gender": "female"
-              }
+                "user": {
+                    "id": 1,
+                    "provider": "email",
+                    "uid": "test@test.com",
+                    "allow_password_change": false,
+                    "name": "test",
+                    "email": "test@test.com",
+                    "created_at": "2018-11-02T17:54:14.451Z",
+                    "updated_at": "2018-11-02T17:54:14.576Z",
+                    "gender": "male",
+                    "avatar": {
+                        "url": "/fallback/default-avatar.png",
+                        "thumb": {
+                            "url": "/fallback/thumb_default-avatar.png"
+                        },
+                        "normal": {
+                            "url": "/fallback/normal_default-avatar.png"
+                        }
+                    }
+                }
             }
 
 + Response 422
@@ -88,7 +97,16 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                 "id": 1,
                 "email": "testing@test.com",
                 "gender": "female",
-                "name": "testing"
+                "name": "testing",
+                "avatar": {
+                        "url": "/fallback/default-avatar.png",
+                        "thumb": {
+                            "url": "/fallback/thumb_default-avatar.png"
+                        },
+                        "normal": {
+                            "url": "/fallback/normal_default-avatar.png"
+                        }
+                    }
               }
             }
 
@@ -122,7 +140,16 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                 "id": 1,
                 "email": "test@test.com",
                 "gender": "male",
-                "name": "test"
+                "name": "test",
+                "avatar": {
+                        "url": "/fallback/default-avatar.png",
+                        "thumb": {
+                            "url": "/fallback/thumb_default-avatar.png"
+                        },
+                        "normal": {
+                            "url": "/fallback/normal_default-avatar.png"
+                        }
+                    }
               }
             }
 
@@ -156,17 +183,26 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
     + Body
 
             {
-              "user": {
-                "id": 1,
-                "provider": "email",
-                "uid": "test@test.com",
-                "allow_password_change": false,
-                "name": "Test",
-                "email": "test@test.com",
-                "created_at": "2018-09-25T18:28:25.716Z",
-                "updated_at": "2018-09-25T18:28:25.834Z",
-                "gender": "female"
-              }
+                "user": {
+                    "id": 1,
+                    "email": "test@test.com",
+                    "avatar": {
+                        "url": "/fallback/default-avatar.png",
+                        "thumb": {
+                            "url": "/fallback/thumb_default-avatar.png"
+                        },
+                        "normal": {
+                            "url": "/fallback/normal_default-avatar.png"
+                        }
+                    },
+                    "provider": "email",
+                    "name": "test",
+                    "gender": "male",
+                    "uid": "test@test.com",
+                    "allow_password_change": false,
+                    "created_at": "2018-11-02T17:54:14.451Z",
+                    "updated_at": "2018-11-02T18:14:05.788Z"
+                }
             }
 
 + Response 401
@@ -188,6 +224,15 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             {
               "user": {
                 "id"=>28209,
+                "avatar": {
+                        "url": "/fallback/default-avatar.png",
+                        "thumb": {
+                            "url": "/fallback/thumb_default-avatar.png"
+                        },
+                        "normal": {
+                            "url": "/fallback/normal_default-avatar.png"
+                        }
+                    },
                 "provider"=>"facebook",
                 "uid"=>"987654321",
                 "allow_password_change"=>false,
@@ -415,7 +460,7 @@ This route is the destination URL for password reset confirmation
               "error": "Couldn't find the record"
             }
 
-## Match Collection [/api/v1/user/matches]
+## Match Collection [/api/v1/users/matches]
 
 ### Get Matches [GET]
 
