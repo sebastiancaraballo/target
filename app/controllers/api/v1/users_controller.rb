@@ -13,7 +13,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:email, :name, :gender, :avatar)
+        params.require(:user).permit(:email, :name, :gender, :avatar, push_token: [])
       end
 
       def user

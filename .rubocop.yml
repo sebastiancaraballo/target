@@ -71,3 +71,7 @@ Style/FrozenStringLiteralComment:
 
 Style/ModuleFunction:
   Enabled: false
+
+Style/StringLiterals:
+  Exclude:
+    - spec/support/notifications_mocker.rb

@@ -134,6 +134,13 @@ describe 'POST api/v1/spots', type: :request do
                              topic_id: topic.id)
       }
     end
+    let(:service) do
+      NotificationService.new
+    end
+
+    before do
+      create_notification_mock(200, create_notification_ok_body)
+    end
 
     it 'creates the match' do
       expect do
@@ -147,6 +154,11 @@ describe 'POST api/v1/spots', type: :request do
         id: match.id,
         matched_user_id: match.second_user_id
       )
+    end
+
+    it 'sends the matched user a notification' do
+      post api_v1_spots_path, params: params, headers: auth_headers, as: :json
+      expect(WebMock).to have_requested(:post, 'https://onesignal.com/api/v1/notifications')
     end
 
     it_behaves_like 'valid params'

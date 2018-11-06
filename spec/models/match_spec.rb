@@ -51,6 +51,7 @@ describe Match, type: :model do
       end
 
       it 'creates the match' do
+        create_notification_mock(200, create_notification_ok_body)
         expect do
           create(:spot,
                  latitude: -34.907603,
