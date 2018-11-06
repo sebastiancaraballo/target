@@ -64,6 +64,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave-base64 (2.7.0)
+      carrierwave (>= 0.8.0)
+      mime-types (~> 3.0)
     code_analyzer (0.4.8)
       sexp_processor
     codeclimate-engine-rb (0.4.1)
@@ -309,6 +312,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   carrierwave (~> 1.2, >= 1.2.3)
+  carrierwave-base64 (~> 2.7)
   database_cleaner (~> 1.4.1)
   devise (~> 4.4.3)
   devise_token_auth (~> 0.1.43)
