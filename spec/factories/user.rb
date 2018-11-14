@@ -5,6 +5,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     name                  { Faker::Name.name }
     gender                { User.genders.keys.sample }
+    push_token            { ['123a4567-8a9a-12aa-a34a-5aa67a89aaaa'] }
 
     factory :user_with_conversations do
       transient do
