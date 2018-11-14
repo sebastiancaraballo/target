@@ -23,6 +23,8 @@ class Match < ApplicationRecord
 
   validate :not_same_user
 
+  delegate :name, :avatar, :push_token, to: :second_user, prefix: true
+
   def first?(user)
     first_user == user
   end

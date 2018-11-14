@@ -30,3 +30,8 @@ en:
       not_same_user: 'Matches must be associated with two different users'
       blank_message: 'The message must not be blank.'
       not_unique_user: 'There is an already registered user with same email'
+      push: 'An error occurred when sending push notification'
+    notifications:
+      new_match: 'You have a new match!'
+      blank_message: 'Notification content must not be null for any languages.'
+      no_players: 'All included players are not subscribed'

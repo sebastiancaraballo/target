@@ -28,6 +28,7 @@
 #  updated_at             :datetime         not null
 #  gender                 :integer
 #  avatar                 :string
+#  push_token             :string
 #
 # Indexes
 #

@@ -48,7 +48,23 @@ class Spot < ApplicationRecord
                            .where.not(user_id: user_id)
 
     compatible_spots.each do |spot|
-      matches.create!(first_user_id: user_id, second_user_id: spot.user_id)
+      create_match(spot)
     end
+  end
+
+  def create_match(spot)
+    match = matches.create!(first_user_id: user_id, second_user_id: spot.user_id)
+    notify(match)
+  end
+
+  def notify(match)
+    return unless match.second_user_push_token
+    data = {
+      name: match.second_user_name,
+      avatar: match.second_user_avatar.url,
+      match_id: match.id
+    }
+    NotificationService.new.notify(match.second_user_push_token,
+                                   t('api.notifications.new_match'), data)
   end
 end

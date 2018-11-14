@@ -28,6 +28,7 @@
 #  updated_at             :datetime         not null
 #  gender                 :integer
 #  avatar                 :string
+#  push_token             :string
 #
 # Indexes
 #
@@ -54,6 +55,8 @@ class User < ApplicationRecord
   has_many :conversations, through: :user_conversations, dependent: :destroy
 
   validates :name, :gender, presence: true
+
+  serialize :push_token, Array
 
   def matches
     first_matches << second_matches

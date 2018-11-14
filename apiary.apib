@@ -48,14 +48,15 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                     "updated_at": "2018-11-02T17:54:14.576Z",
                     "gender": "male",
                     "avatar": {
-                        "url": "/fallback/default-avatar.png",
+                        "url": null,
                         "thumb": {
-                            "url": "/fallback/thumb_default-avatar.png"
+                            "url": null
                         },
                         "normal": {
-                            "url": "/fallback/normal_default-avatar.png"
+                            "url": null
                         }
-                    }
+                    },
+                    "push_token": []
                 }
             }
 
@@ -78,7 +79,9 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
               "user": {
                 "email": "testing@test.com",
                 "gender": "female",
-                "name": "testing"
+                "name": "testing",
+                "avatar": "data:image/png;base64,<encoded_image_in_base_64>",
+                "push_token" : ["6392d91a-b206-4b7b-a620-cd68e32c3a76"]
               }
             }
 
@@ -99,14 +102,17 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                 "gender": "female",
                 "name": "testing",
                 "avatar": {
-                        "url": "/fallback/default-avatar.png",
-                        "thumb": {
-                            "url": "/fallback/thumb_default-avatar.png"
-                        },
-                        "normal": {
-                            "url": "/fallback/normal_default-avatar.png"
-                        }
+                    "url": "/uploads/user/avatar/1/avatar.png",
+                    "thumb": {
+                        "url": "/uploads/user/avatar/1/thumb_avatar.png"
+                    },
+                    "normal": {
+                        "url": "/uploads/user/avatar/1/normal_avatar.png"
                     }
+                }
+                "push_token": [
+                    "6392d91a-b206-4b7b-a620-cd68e32c3a76"
+                ]
               }
             }
 
@@ -142,14 +148,17 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                 "gender": "male",
                 "name": "test",
                 "avatar": {
-                        "url": "/fallback/default-avatar.png",
-                        "thumb": {
-                            "url": "/fallback/thumb_default-avatar.png"
-                        },
-                        "normal": {
-                            "url": "/fallback/normal_default-avatar.png"
-                        }
+                    "url": "/uploads/user/avatar/1/avatar.png",
+                    "thumb": {
+                        "url": "/uploads/user/avatar/1/thumb_avatar.png"
+                    },
+                    "normal": {
+                        "url": "/uploads/user/avatar/1/normal_avatar.png"
                     }
+                },
+                "push_token": [
+                    "6392d91a-b206-4b7b-a620-cd68e32c3a76"
+                ]
               }
             }
 
@@ -187,12 +196,12 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                     "id": 1,
                     "email": "test@test.com",
                     "avatar": {
-                        "url": "/fallback/default-avatar.png",
+                        "url": "/uploads/user/avatar/1/avatar.png",
                         "thumb": {
-                            "url": "/fallback/thumb_default-avatar.png"
+                            "url": "/uploads/user/avatar/1/thumb_avatar.png"
                         },
                         "normal": {
-                            "url": "/fallback/normal_default-avatar.png"
+                            "url": "/uploads/user/avatar/1/normal_avatar.png"
                         }
                     },
                     "provider": "email",
@@ -201,7 +210,10 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
                     "uid": "test@test.com",
                     "allow_password_change": false,
                     "created_at": "2018-11-02T17:54:14.451Z",
-                    "updated_at": "2018-11-02T18:14:05.788Z"
+                    "updated_at": "2018-11-02T18:14:05.788Z",
+                    "push_token": [
+                        "6392d91a-b206-4b7b-a620-cd68e32c3a76"
+                    ]
                 }
             }
 
