@@ -66,4 +66,12 @@ describe User, type: :model do
     }
     it { should have_many(:conversations).through(:user_conversations) }
   end
+
+  describe 'callbacks' do
+    it { is_expected.to callback(:send_welcome_mail).after(:create) }
+
+    it 'adds email to queue' do
+      expect { create(:user) }.to have_enqueued_job.on_queue('mailers')
+    end
+  end
 end

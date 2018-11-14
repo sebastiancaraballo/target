@@ -41,6 +41,8 @@ gem 'carrierwave-base64', '~> 2.7'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'fog-aws', '~> 3.3'
 gem 'one_signal', '~> 1.2'
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.3'
+gem 'sendgrid', '~> 1.2', '>= 1.2.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,6 +62,7 @@ group :development do
   gem 'rails_best_practices', '~> 1.19.0'
   gem 'reek', '~> 5.0', '>= 5.0.2'
   gem 'rubocop', '~> 0.58.0'
+  gem 'letter_opener', '~> 1.6'
 end
 
 group :test do
@@ -68,6 +71,7 @@ group :test do
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'action-cable-testing', '~> 0.3.2'
   gem 'webmock', '~> 3.4', '>= 3.4.2'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
 end
 
 
