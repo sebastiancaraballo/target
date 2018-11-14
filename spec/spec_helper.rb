@@ -10,6 +10,8 @@ require 'webmock/rspec'
 FactoryBot.factories.clear
 FactoryBot.reload
 
+ActiveJob::Base.queue_adapter = :test
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|

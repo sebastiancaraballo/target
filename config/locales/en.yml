@@ -35,3 +35,7 @@ en:
       new_match: 'You have a new match!'
       blank_message: 'Notification content must not be null for any languages.'
       no_players: 'All included players are not subscribed'
+    emails:
+      welcome_message:
+        subject: 'Welcome to Target'
+        url: 'To login to the site, just follow this link:'

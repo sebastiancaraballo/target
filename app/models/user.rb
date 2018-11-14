@@ -56,6 +56,8 @@ class User < ApplicationRecord
 
   validates :name, :gender, presence: true
 
+  after_create :send_welcome_mail
+
   serialize :push_token, Array
 
   def matches
@@ -68,5 +70,11 @@ class User < ApplicationRecord
       user.name = "#{user_profile[:first_name]} #{user_profile[:last_name]}"
       user.assign_attributes user_profile.except('id', 'first_name', 'last_name')
     end
+  end
+
+  private
+
+  def send_welcome_mail
+    UserMailer.with(user: self).welcome_email.deliver_later
   end
 end

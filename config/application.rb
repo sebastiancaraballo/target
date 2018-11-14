@@ -32,6 +32,13 @@ module Target
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    ActionMailer::Base.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: 25,
+      authentication: :plain,
+      user_name: ENV['SENDGRID_USERNAME'],
+      password: ENV['SENDGRID_PASSWORD']
+    }
     config.action_mailer.default_url_options = { host: ENV['SERVER_URL'] }
     config.action_mailer.default_options = {
       from: 'no-reply@api.com'
