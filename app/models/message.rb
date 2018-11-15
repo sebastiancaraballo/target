@@ -23,8 +23,27 @@ class Message < ApplicationRecord
 
   after_create_commit :broadcast_message
   after_create_commit :increment_unread_messages_counter
+  after_create_commit :notify_addressee
 
   private
+
+  def notify_addressee
+    return unless addressee_push_token.any?
+    NotificationService.new.notify(addressee_push_token,
+                                   I18n.t('api.notifications.new_message'), message_data)
+  end
+
+  def message_data
+    {
+      sender: sender.name,
+      avatar: sender.avatar.url,
+      content: content
+    }
+  end
+
+  def addressee_push_token
+    conversation.other_user(sender).push_token
+  end
 
   def increment_unread_messages_counter
     if conversation.first?(sender)

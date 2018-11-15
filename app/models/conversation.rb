@@ -21,10 +21,16 @@ class Conversation < ApplicationRecord
   has_many :users, through: :user_conversations
   has_many :messages, dependent: :destroy
 
+  after_create :add_users_from_match
+
   delegate :first?, to: :match
 
   def unread_messages_count(user)
     first?(user) ? first_user_unread_messages : second_user_unread_messages
+  end
+
+  def other_user(user)
+    users.where.not(id: user.id).first
   end
 
   def last_message
@@ -37,5 +43,11 @@ class Conversation < ApplicationRecord
     else
       update(second_user_unread_messages: 0)
     end
+  end
+
+  private
+
+  def add_users_from_match
+    users << [match.first_user, match.second_user]
   end
 end

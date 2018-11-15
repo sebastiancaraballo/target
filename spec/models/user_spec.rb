@@ -68,9 +68,7 @@ describe User, type: :model do
   end
 
   describe 'callbacks' do
-    it { is_expected.to callback(:send_welcome_mail).after(:create) }
-
-    it 'adds email to queue' do
+    it 'sends welcome mail after creating user' do
       expect { create(:user) }.to have_enqueued_job.on_queue('mailers')
     end
   end

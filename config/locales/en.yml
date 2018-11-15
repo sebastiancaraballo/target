@@ -33,6 +33,7 @@ en:
       push: 'An error occurred when sending push notification'
     notifications:
       new_match: 'You have a new match!'
+      new_message: 'You have a new message!'
       blank_message: 'Notification content must not be null for any languages.'
       no_players: 'All included players are not subscribed'
     emails:
