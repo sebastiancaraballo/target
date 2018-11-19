@@ -71,7 +71,6 @@ group :test do
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'action-cable-testing', '~> 0.3.2'
   gem 'webmock', '~> 3.4', '>= 3.4.2'
-  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
 end
 
 

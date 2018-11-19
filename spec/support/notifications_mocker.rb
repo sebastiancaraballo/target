@@ -1,5 +1,5 @@
 def create_notification_mock(status, response_body)
-  stub_request(:post, 'https://onesignal.com/api/v1/notifications')
+  stub_request(:post, ENV['ONESIGNAL_NOTIFICATIONS_URL'])
     .with(
       headers: {
         'Authorization': "Basic #{ENV['PUSH_API_KEY']}",

@@ -58,13 +58,13 @@ class Spot < ApplicationRecord
   end
 
   def notify(match)
-    return unless match.second_user_push_token
+    return unless match.second_user_push_token.any?
     data = {
       name: match.second_user_name,
       avatar: match.second_user_avatar.url,
       match_id: match.id
     }
     NotificationService.new.notify(match.second_user_push_token,
-                                   t('api.notifications.new_match'), data)
+                                   I18n.t('api.notifications.new_match'), data)
   end
 end

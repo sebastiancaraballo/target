@@ -115,7 +115,7 @@ describe 'POST api/v1/spots', type: :request do
   end
 
   context 'when two spots match' do
-    let(:matched_user) { create(:user) }
+    let(:matched_user) { create(:user, push_token: [Faker::Number.number(20)]) }
     let(:match) { Match.last }
     let!(:spot) do
       create(:spot,
@@ -158,7 +158,7 @@ describe 'POST api/v1/spots', type: :request do
 
     it 'sends the matched user a notification' do
       post api_v1_spots_path, params: params, headers: auth_headers, as: :json
-      expect(WebMock).to have_requested(:post, 'https://onesignal.com/api/v1/notifications')
+      expect(WebMock).to have_requested(:post, ENV['ONESIGNAL_NOTIFICATIONS_URL'])
     end
 
     it_behaves_like 'valid params'

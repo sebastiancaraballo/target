@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ConversationChannel, type: :channel do
   let(:user)          { create(:user) }
-  let(:other_user)    { create(:user) }
+  let(:other_user)    { create(:user, push_token: [Faker::Number.number(20)]) }
   let(:match)         { create(:match, first_user: user, second_user: other_user) }
   let(:conversation)  { create(:conversation, users: [user, other_user], match: match) }
   let(:message)       { 'Hello, Rails!' }
@@ -24,6 +24,7 @@ describe ConversationChannel, type: :channel do
     before do
       stub_connection(current_user: user)
       subscribe(params)
+      create_notification_mock(200, create_notification_ok_body)
     end
 
     context 'when subscribing to existing conversations' do
@@ -55,6 +56,11 @@ describe ConversationChannel, type: :channel do
           speak
           conversation.reload
         end.to change { conversation.second_user_unread_messages }.by(1)
+      end
+
+      it 'sends the addressee a notification' do
+        speak
+        expect(WebMock).to have_requested(:post, ENV['ONESIGNAL_NOTIFICATIONS_URL'])
       end
     end
   end
