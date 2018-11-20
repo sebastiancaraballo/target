@@ -1,0 +1,15 @@
+<div id="login-wrapper">
+   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, placeholder: "EMAIL", class: "login-field" %>
+    </div>
+     <div class="field">
+      <%= f.password_field :password, placeholder: "PASSWORD", class: "login-field"%>
+    </div>
+     <div class="actions">
+      <%= f.submit "SIGN IN", class: "submit-btn" %>
+    </div>
+    <%= content_tag(:div, flash[:alert], class: 'alert') if flash[:alert] %>
+    <%= devise_error_messages! %>
+  <% end %>
+</div>

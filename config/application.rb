@@ -43,5 +43,10 @@ module Target
     config.action_mailer.default_options = {
       from: 'no-reply@api.com'
     }
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_target_session'
   end
 end

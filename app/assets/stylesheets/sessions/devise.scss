@@ -1,0 +1,73 @@
+$submitColor: black;
+$inputColor: white;
+ #login-wrapper {
+  background-image: url("landing.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: table;
+  height: 100%;
+  width: 100%;
+   form {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+   .login-field {
+    background: none;
+    border: none;
+    border-bottom: 1px solid $inputColor;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-bottom: 3%;
+    padding-bottom: 1%;
+    color: $inputColor;
+    width: 30%;
+     &:focus {
+      outline: none;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: $inputColor;
+        -webkit-box-shadow: 0 0 0px 1000px none inset;
+        -moz-box-shadow: 0 0 0 100px none inset;
+        box-shadow: 0 0 0px 1000px none inset;
+    }
+     &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $inputColor;
+      font-size: 10pt;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $inputColor;
+      font-size: 10pt;
+      opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $inputColor;
+      font-size: 10pt;
+      opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $inputColor;
+      font-size: 10pt;
+    }
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: $inputColor;
+      font-size: 10pt;
+    }
+  }
+   .submit-btn {
+    background: $submitColor;
+    border: none;
+    color: white;
+    font-size: 11pt;
+    height: 25%;
+    margin-bottom: 1%;
+    padding: 1.5vh 0;
+    width: 10%;
+    -webkit-appearance: none;
+  }
+}

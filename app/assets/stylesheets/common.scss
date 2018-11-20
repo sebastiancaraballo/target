@@ -1,0 +1,11 @@
+$redAlertMessage: #CA4C4C;
+body, html {
+  height: 100%;
+  margin: 0;
+}
+  .alert {
+  color: $redAlertMessage;
+  font-size: 12pt;
+  margin-bottom: 2vh;
+  font-weight: bold;
+}
