@@ -40,3 +40,16 @@ en:
       welcome_message:
         subject: 'Welcome to Target'
         url: 'To login to the site, just follow this link:'
+  active_admin:
+    forms:
+      user:
+        avatar_input: 'Select profile picture:'
+      spot:
+        user_input_label: 'Select spot creator:'
+        topic_input_label: 'Select spot topic:'
+      match:
+        first_user_input_label: 'Select match creator:'
+        second_user_input_label: 'Select matched user:'
+        spot_input_label: 'Select spot:'
+      conversation:
+        match_input_label: 'Select match:'

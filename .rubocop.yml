@@ -49,6 +49,8 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  Exclude:
+    - config/initializers/active_admin.rb
 
 Metrics/ParameterLists:
   Max: 5

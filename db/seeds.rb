@@ -17,3 +17,9 @@ topics = Topic.create([
                         { label: 'Series' },
                         { label: 'Food' }
                       ])
+if Rails.env.development?
+  Admin.create!(email: 'admin@target.com',
+                password: 'password',
+                password_confirmation: 'password',
+                name: 'Admin')
+end

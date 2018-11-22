@@ -1,0 +1,11 @@
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+body.logged_out {
+  background-image: url("landing.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
