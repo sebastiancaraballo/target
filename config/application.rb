@@ -10,7 +10,7 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
 require 'action_cable/engine'
-# require 'sprockets/railtie'
+require 'sprockets/railtie'
 # require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
@@ -43,5 +43,10 @@ module Target
     config.action_mailer.default_options = {
       from: 'no-reply@api.com'
     }
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_target_session'
   end
 end
