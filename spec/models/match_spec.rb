@@ -20,9 +20,10 @@ require 'rails_helper'
 
 describe Match, type: :model do
   describe 'associations' do
-    it { should belong_to(:spot) }
-    it { should belong_to(:first_user).class_name('User') }
-    it { should belong_to(:second_user).class_name('User') }
+    it { is_expected.to belong_to(:spot) }
+    it { is_expected.to belong_to(:first_user).class_name('User') }
+    it { is_expected.to belong_to(:second_user).class_name('User') }
+    it { is_expected.to have_one(:conversation).dependent(:destroy) }
 
     context 'when first and second user are the same' do
       let(:user)    { create(:user) }
