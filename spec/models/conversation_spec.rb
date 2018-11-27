@@ -18,8 +18,8 @@ require 'rails_helper'
 
 describe Conversation, type: :model do
   describe 'associations' do
-    it { should belong_to(:match) }
-    it { should have_many(:users).through(:user_conversations) }
-    it { should have_many(:messages).dependent(:destroy) }
+    it { is_expected.to belong_to(:match) }
+    it { is_expected.to have_many(:users).through(:user_conversations) }
+    it { is_expected.to have_many(:messages).dependent(:destroy) }
   end
 end

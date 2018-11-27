@@ -53,18 +53,18 @@ describe User, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:spots).dependent(:destroy) }
+    it { is_expected.to have_many(:spots).dependent(:destroy) }
     it {
-      should have_many(:first_matches)
+      is_expected.to have_many(:first_matches)
         .class_name('Match')
         .with_foreign_key('first_user_id')
     }
     it {
-      should have_many(:second_matches)
+      is_expected.to have_many(:second_matches)
         .class_name('Match')
         .with_foreign_key('second_user_id')
     }
-    it { should have_many(:conversations).through(:user_conversations) }
+    it { is_expected.to have_many(:conversations).through(:user_conversations) }
   end
 
   describe 'callbacks' do

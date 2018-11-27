@@ -31,8 +31,8 @@ describe Spot, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:user) }
-    it { should belong_to(:topic) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:topic) }
 
     context 'when exceeding 10th spot creation limit' do
       let(:user)    { create(:user) }

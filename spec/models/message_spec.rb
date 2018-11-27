@@ -24,7 +24,7 @@ describe Message, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:conversation) }
-    it { should belong_to(:sender).class_name('User') }
+    it { is_expected.to belong_to(:conversation) }
+    it { is_expected.to belong_to(:sender).class_name('User') }
   end
 end

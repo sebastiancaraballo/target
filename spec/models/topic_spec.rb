@@ -16,6 +16,6 @@ describe Topic, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:spots) }
+    it { is_expected.to have_many(:spots) }
   end
 end

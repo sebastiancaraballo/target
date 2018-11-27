@@ -21,6 +21,8 @@ class Match < ApplicationRecord
   belongs_to :first_user, class_name: 'User'
   belongs_to :second_user, class_name: 'User'
 
+  has_one :conversation, dependent: :destroy
+
   validate :not_same_user
 
   delegate :name, :avatar, :push_token, to: :second_user, prefix: true
