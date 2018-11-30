@@ -11,19 +11,8 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
 ### Sign Up [POST]
 
 + Request (application/json)
-    + Body
-
-            {
-              "user":
-                {
-                  "email": "test@test.com",
-                  "name" : "Test",
-                  "gender": "female",
-                  "password": "password",
-                  "password_confirmation": "password"
-                }
-            }
-
+    + Attributes
+      + user (User Edition, required)
 
 + Response 200 (application/json)
     + Headers
@@ -33,35 +22,10 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             expiry: 1601058505
             uid: test@test.com
 
-
-    + Body
-
-            {
-                "user": {
-                    "id": 1,
-                    "provider": "email",
-                    "uid": "test@test.com",
-                    "allow_password_change": false,
-                    "name": "test",
-                    "email": "test@test.com",
-                    "created_at": "2018-11-02T17:54:14.451Z",
-                    "updated_at": "2018-11-02T17:54:14.576Z",
-                    "gender": "male",
-                    "avatar": {
-                        "url": null,
-                        "thumb": {
-                            "url": null
-                        },
-                        "normal": {
-                            "url": null
-                        }
-                    },
-                    "push_token": []
-                }
-            }
+    + Attributes
+      + user (User Response, required)
 
 + Response 422
-
 
 ## Update current user profile [/api/v1/users/{id}]
 
@@ -74,16 +38,8 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             client: QADgNCWRJj0LyRruqzYbBg
             uid: test@test.com
 
-    + Body
-            {
-              "user": {
-                "email": "testing@test.com",
-                "gender": "female",
-                "name": "testing",
-                "avatar": "data:image/png;base64,<encoded_image_in_base_64>",
-                "push_token" : ["6392d91a-b206-4b7b-a620-cd68e32c3a76"]
-              }
-            }
+    + Attributes
+      + user (User Update Edition, required)
 
 + Response 200 (application/json)
     + Headers
@@ -93,28 +49,8 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             expiry: 1489009792
             uid: testing@test.com
 
-
-     + Body
-            {
-              "user": {
-                "id": 1,
-                "email": "testing@test.com",
-                "gender": "female",
-                "name": "testing",
-                "avatar": {
-                    "url": "/uploads/user/avatar/1/avatar.png",
-                    "thumb": {
-                        "url": "/uploads/user/avatar/1/thumb_avatar.png"
-                    },
-                    "normal": {
-                        "url": "/uploads/user/avatar/1/normal_avatar.png"
-                    }
-                }
-                "push_token": [
-                    "6392d91a-b206-4b7b-a620-cd68e32c3a76"
-                ]
-              }
-            }
+    + Attributes
+      + user (User Response, required)
 
 ## Get user's profile [/api/v1/users/{id}]
 
@@ -140,30 +76,10 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             uid: test@test.com
 
 
-    + Body
-            {
-              "user": {
-                "id": 1,
-                "email": "test@test.com",
-                "gender": "male",
-                "name": "test",
-                "avatar": {
-                    "url": "/uploads/user/avatar/1/avatar.png",
-                    "thumb": {
-                        "url": "/uploads/user/avatar/1/thumb_avatar.png"
-                    },
-                    "normal": {
-                        "url": "/uploads/user/avatar/1/normal_avatar.png"
-                    }
-                },
-                "push_token": [
-                    "6392d91a-b206-4b7b-a620-cd68e32c3a76"
-                ]
-              }
-            }
+    + Attributes
+      + user (User Response, required)
 
 + Response 401
-
 
 ## Log In [/api/v1/users/sign_in]
 
@@ -172,6 +88,7 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
 + Request (application/json)
 
     + Body
+
             {
               "user":
                 {
@@ -189,33 +106,8 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             expiry: 1489009792
             uid: test@test.com
 
-    + Body
-
-            {
-                "user": {
-                    "id": 1,
-                    "email": "test@test.com",
-                    "avatar": {
-                        "url": "/uploads/user/avatar/1/avatar.png",
-                        "thumb": {
-                            "url": "/uploads/user/avatar/1/thumb_avatar.png"
-                        },
-                        "normal": {
-                            "url": "/uploads/user/avatar/1/normal_avatar.png"
-                        }
-                    },
-                    "provider": "email",
-                    "name": "test",
-                    "gender": "male",
-                    "uid": "test@test.com",
-                    "allow_password_change": false,
-                    "created_at": "2018-11-02T17:54:14.451Z",
-                    "updated_at": "2018-11-02T18:14:05.788Z",
-                    "push_token": [
-                        "6392d91a-b206-4b7b-a620-cd68e32c3a76"
-                    ]
-                }
-            }
+    + Attributes
+      + user (User Response, required)
 
 + Response 401
 
@@ -229,32 +121,9 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             access-token: sO2bm_Bpdyoo8r78jZ-fqg
             client: QADgNCWRJj0LyRruqzYbBg
             uid: test@test.com
-
-
-    + Body
-
-            {
-              "user": {
-                "id"=>28209,
-                "avatar": {
-                        "url": "/fallback/default-avatar.png",
-                        "thumb": {
-                            "url": "/fallback/thumb_default-avatar.png"
-                        },
-                        "normal": {
-                            "url": "/fallback/normal_default-avatar.png"
-                        }
-                    },
-                "provider"=>"facebook",
-                "uid"=>"987654321",
-                "allow_password_change"=>false,
-                "name"=>"Jhon Doe",
-                "email"=>"test@facebook.com",
-                "created_at"=>"2018-10-31T17:27:50.869Z",
-                "updated_at"=>"2018-10-31T17:27:50.947Z",
-                "gender"=>"male"
-              }
-            }
+    
+    + Attributes
+      + user (User Facebook Response, required)
 
 ## Log out [/api/v1/users/sign_out]
 
@@ -269,13 +138,10 @@ For GENDER attribute, possible values are: __'male'__, __'female'__ and __'other
             uid: test@test.com
 
 + Response 200 (application/json)
-    + Body
-            {
-              "success": true
-            }
 
 + Response 404
     + Body
+
             {
               "error": "User was not found or was not logged in."
             }
@@ -331,7 +197,8 @@ Use this route to change user's passwords
             expiry: 1489009792
             uid: test@test.com
 
-    + Attributes (Profile Response)
+    + Attributes
+      + user (User Response, required)
 
 ## Edit reset password [/api/v1/users/password/edit]
 
@@ -352,35 +219,22 @@ This route is the destination URL for password reset confirmation
             expiry: 1489009792
             uid: test@test.com
 
-## Topics Collection
+## Topics Collection [/api/v1/topics]
 
-### Get Topics [/api/v1/topics] [GET]
+### Get Topics [GET]
 
 + Request (application/json)
     + Headers
+
             access-token: 0JfjvKLv7NR3_d10350u2w
             client: pBx8B5nowYy3L-EXueP6nQ
             uid: test@test.com
             token-type: Bearer
 
 + Response 200 (application/json)
-    + Body
+    + Attributes
+      + topics (Topics Collection)
 
-            {
-              "topics": 
-                [
-                  {
-                      "id": 1,
-                      "label": "Football"
-                  }
-                ]
-            }
-
-+ Response 401
-    + Body
-            {
-              "error": "You need to sign in or sign up before continuing."
-            }
 
 ## Spot Collection [/api/v1/spots]
 
@@ -388,73 +242,37 @@ This route is the destination URL for password reset confirmation
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
+    
+    + Attributes
+      + spot (Spot, required)
 
 + Response 200 (application/json)
-    + Body
-
-            {
-              "spot": {
-                      "id": 4,
-                      "title": "spot",
-                      "latitude": -34.907604,
-                      "longitude": -56.201101,
-                      "radius": 500,
-                      "topic_id": 1
-                  },
-              "matches": [
-                  {
-                      "id": 2,
-                      "matched_user_id": 1
-                  }
-              ]
-            }
-
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
+    + Attributes
+        + spot (Spot, required)
+        + matches (Min Details Matches Collection)
 
 ### Get Spots [GET]
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
 
 + Response 200 (application/json)
-    + Body
+    + Attributes
+        + spots (Spots Collection)
 
-            {
-                "spots": [
-                    {
-                        "id": 1,
-                        "title": "spot",
-                        "latitude": "-94.5566",
-                        "longitude": "-94.5566",
-                        "radius": "27384.4",
-                        "topic_id": 1
-                    }
-                ]
-            }
+## Delete spot [/api/v1/spots/{id}]
 
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
-
-### Destroy a spot [DELETE] [/api/v1/spots/{id}]
+### Delete spot [DELETE]
 
 + Request (application/json)
     + Headers
@@ -468,6 +286,7 @@ This route is the destination URL for password reset confirmation
 
 + Response 404
     + Body
+
             {
               "error": "Couldn't find the record"
             }
@@ -478,31 +297,15 @@ This route is the destination URL for password reset confirmation
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
 
 + Response 200 (application/json)
-    + Body
-
-            {
-                "matches": [
-                    {
-                        "id": 1,
-                        "first_user_id": 1,
-                        "second_user_id": 2
-                    }
-                ]
-            }
-
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
+    + Attributes
+            + matches (Matches Collection)
 
 ## Match Conversations [/api/v1/conversations]
 
@@ -510,103 +313,144 @@ This route is the destination URL for password reset confirmation
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
+    
+    + Body
+
+            {
+                "conversation":
+                {
+                    "match_id": 1
+                }
+            }
 
 + Response 200 (application/json)
-    + Body
-
-            {
-                "conversations": [
-                    {
-                        "id": 1,
-                        "match_id": 1
-                        "unread_messages": 0,
-                        "last_message": null
-                    }
-                ]
-            }
-
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
+    + Attributes
+            + conversation (Conversation, required)
 
 ### Get Conversations [GET]
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
 
 + Response 200 (application/json)
-    + Body
+    + Attributes
+                + conversations (Conversations Collection)
 
-            {
-                "conversations": [
-                    {
-                        "id": 1,
-                        "match_id": 1,
-                        "unread_messages": 0,
-                        "last_message": "Hello"
-                    }
-                ]
-            }
+### Messages Collection [/api/v1/conversations/{id}/messages]
 
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
-
-### Get Messages [GET] [/api/v1/conversations/{id}/messages]
+## Get Messages [GET]
 
 + Request (application/json)
     + Headers
+
             access-token: Aq0GCbYKWFA0oAbcvRzP9g
             client: 0WPgnm5Ns79vEqh1O81Akg
             uid: test@test.com
             token-type: Bearer
 
 + Response 200 (application/json)
-    + Body
-
-            {
-                "messages": [
-                    {
-                        "id": 1,
-                        "content": "Message",
-                        "created_at": "2018-09-25T18:28:25.834Z"
-                        "sender_id": 1                        
-                    }
-                ]
-            }
-
-+ Response 401
-    + Body
-            {
-                "errors": [
-                    "You need to sign in or sign up before continuing."
-                ]
-            }
+    + Attributes
+                + messages (Messages Collection)
 
 # Data Structures
 
-## Profile Response (object)
-+ id: 100 (number)
+## User Edition (object)
 + email: test@test.com (string)
-+ provider: email (enum[string])
-+ uid: test@test.com (string)
 + name: Test (string)
++ gender: female (string)
++ password: password (string)
++ password_confirmation: password (string)
+
+## User Update Edition (object)
++ email: test@test.com (string)
++ name: Test (string)
++ gender: female (string)
++ avatar (Avatar)
++ push_token (array[string])
+
+## User Response (object)
++ id: 1 (number)
++ provider: email (string)
++ uid: test@test.com (string)
++ name: test (string)
++ email: test@test.com (string)
++ created_at: 2018-11-02T17:54:14.451Z (string)
++ updated_at: 2018-11-02T17:54:14.576Z (string)
++ gender: male (string)
++ avatar (Avatar)
++ push_token (array[string])
+
+## User Facebook Response (object)
++ id: 1 (number)
++ provider: facebook (string)
++ uid: 987654321 (string)
++ name: test (string)
++ email: test@test.com (string)
+
+## Avatar (object)
++ url: http://example.com (string)
++ thumb
+    + url: http://example.com (string)
++ normal
+    + url: http://example.com (string)
+
+## Topics Collection (object)
++ topics (array[Topic], required)
+
+## Topic (object)
++ id: 1 (number)
++ label: Football (string)
+
+## Spots Collection (object)
++ spots (array[Spot], required)
+
+## Spot (object)
++ id: 1 (number)
++ title: spot (string)
++ latitude: 34.907604 (number)
++ longitude: 56.201101 (number)
++ radius: 500 (number)
++ topic_id: 1 (number)
+
+## Matches Collection (object)
++ matches (array[Match], required)
+
+## Match (object)
++ id: 1 (number)
++ first_user_id: 1 (number)
++ second_user_id: 2 (number)
+
+## Min Details Matches Collection (object)
++ matches (array[Min Details Match], required)
+
+## Min Details Match (object)
++ id: 1 (number)
++ matched_user_id: 1 (number)
+
+## Conversations Collection (object)
++ conversations (array[Conversation], required)
+
+## Conversation (object)
++ id: 1 (number)
++ match_id: 1 (number)
++ unread_messages: 0 (number)
++ last_message: null (string)
+
+## Messages Collection (object)
++ messages (array[Message], required)
+
+## Message (object)
++ id: 1 (number)
++ content: Message (string)
 + created_at: 2018-09-25T18:28:25.834Z (string)
-+ updated_at": 2018-09-25T18:28:25.834Z (string)
-+ "gender": "female" (string)
++ sender_id: 1 (number)
