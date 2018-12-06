@@ -21,7 +21,7 @@ module Api
       private
 
       def render_create_success
-        render json: { user: resource_data }
+        render :show
       end
     end
   end

@@ -13,9 +13,7 @@ describe 'PUT api/v1/users/:id', type: :request do
                     ))
   end
 
-  let(:image)             { "data:image/png;base64,#{image_data}" }
-  let(:image_url)         { "/uploads/user/avatar/#{user.id}/" }
-  let(:image_filename)    { 'avatar.png' }
+  let(:image) { "data:image/png;base64,#{image_data}" }
 
   before do
     put api_v1_user_path(user), params: params, headers: auth_headers, as: :json
@@ -42,7 +40,7 @@ describe 'PUT api/v1/users/:id', type: :request do
       expect(user.email).to eq(new_email)
       expect(user.name).to eq(new_name)
       expect(user.gender).to eq(new_gender)
-      expect(user.avatar.url).to eq(image_url + image_filename)
+      expect(user.avatar_url).to be_present
     end
 
     it 'returns the user' do
@@ -51,15 +49,7 @@ describe 'PUT api/v1/users/:id', type: :request do
         email: new_email,
         name: new_name,
         gender: new_gender,
-        avatar: {
-          url: image_url + image_filename,
-          thumb: {
-            url: image_url + 'thumb_' + image_filename
-          },
-          normal: {
-            url: image_url + 'normal_' + image_filename
-          }
-        }
+        avatar: user.avatar_url
       )
     end
   end

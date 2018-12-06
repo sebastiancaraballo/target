@@ -61,7 +61,7 @@ class Spot < ApplicationRecord
     return unless match.second_user_push_token.any?
     data = {
       name: match.second_user_name,
-      avatar: match.second_user_avatar.url,
+      avatar: match.second_user.avatar_url,
       match_id: match.id
     }
     NotificationService.new.notify(match.second_user_push_token,

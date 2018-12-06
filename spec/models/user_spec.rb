@@ -20,14 +20,11 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  name                   :string
-#  nickname               :string
-#  image                  :string
 #  email                  :string
 #  tokens                 :json
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  gender                 :integer
-#  avatar                 :string
 #  push_token             :string
 #
 # Indexes

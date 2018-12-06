@@ -36,7 +36,7 @@ class Message < ApplicationRecord
   def message_data
     {
       sender: sender.name,
-      avatar: sender.avatar.url,
+      avatar: sender.avatar_url,
       content: content
     }
   end
