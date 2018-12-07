@@ -20,14 +20,11 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  name                   :string
-#  nickname               :string
-#  image                  :string
 #  email                  :string
 #  tokens                 :json
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  gender                 :integer
-#  avatar                 :string
 #  push_token             :string
 #
 # Indexes
@@ -39,9 +36,9 @@
 #
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  mount_base64_uploader :avatar, AvatarUploader
+  include ActiveStorageSupport::SupportForBase64
+
+  has_one_base64_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
@@ -59,6 +56,10 @@ class User < ApplicationRecord
   after_create :send_welcome_mail
 
   serialize :push_token, Array
+
+  def avatar_url
+    Rails.application.routes.url_helpers.polymorphic_url(avatar) if avatar.attached?
+  end
 
   def matches
     first_matches << second_matches

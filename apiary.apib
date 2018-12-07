@@ -171,6 +171,25 @@ Use this route to send a password reset confirmation email
               "message": "An email has been sent to 'example@mail.com' containing instructions for resetting your password."
             }
 
+## Edit reset password [/api/v1/users/password/edit]
+
+### Edit reset password [GET]
+
+This route is the destination URL for password reset confirmation
+
++ Request (application/json)
+    + Parameters
+        + reset_password_token (string, required)
+        + redirect_url (string)
+
++ Response 200 (application/json)
+    + Headers
+
+            access-token: sO2bm_Bpdyoo8r78jZ-fqg
+            client: QADgNCWRJj0LyRruqzYbBg
+            expiry: 1489009792
+            uid: test@test.com
+
 ### Reset password [PUT]
 
 Use this route to change user's passwords
@@ -199,25 +218,6 @@ Use this route to change user's passwords
 
     + Attributes
       + user (User Response, required)
-
-## Edit reset password [/api/v1/users/password/edit]
-
-### Edit reset password [GET]
-
-This route is the destination URL for password reset confirmation
-
-+ Request (application/json)
-    + Parameters
-        + reset_password_token (string, required)
-        + redirect_url (string)
-
-+ Response 200 (application/json)
-    + Headers
-
-            access-token: sO2bm_Bpdyoo8r78jZ-fqg
-            client: QADgNCWRJj0LyRruqzYbBg
-            expiry: 1489009792
-            uid: test@test.com
 
 ## Topics Collection [/api/v1/topics]
 
@@ -384,9 +384,9 @@ This route is the destination URL for password reset confirmation
 + uid: test@test.com (string)
 + name: test (string)
 + email: test@test.com (string)
++ gender: male (string)
 + created_at: 2018-11-02T17:54:14.451Z (string)
 + updated_at: 2018-11-02T17:54:14.576Z (string)
-+ gender: male (string)
 + avatar (Avatar)
 + push_token (array[string])
 
