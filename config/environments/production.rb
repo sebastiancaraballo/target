@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  routes.default_url_options = { host: ENV['HOST'] }
+  routes.default_url_options = { host: ENV['API_URL'] }
   config.require_master_key = true
 
   # Code is not reloaded between requests.
