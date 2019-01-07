@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: c0582a105ae82b851aeb28be00c663b6d3e6e3d0fecf243a5c7063b2dd8cc873
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.5.3-node-browsers
@@ -47,10 +49,27 @@ jobs:
       - run: RAILS_ENV=test bundle exec rake db:create
       - run: RAILS_ENV=test bundle exec rake db:schema:load
 
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
+
       # run tests!
       - run:
           name: run tests
-          command: RAILS_ENV=test bundle exec rspec
+          command: |
+            RAILS_ENV=test bundle exec rspec
+            ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.backend.json coverage/backend/.resultset.json
+      - persist_to_workspace:
+          root: tmp
+          paths: 
+            - codeclimate.backend.json
 
       # run code_analysis!
       - run:
@@ -63,3 +82,8 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.backend.json

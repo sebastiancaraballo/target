@@ -6,6 +6,11 @@ require 'factory_bot_rails'
 require 'helpers'
 require 'shoulda/matchers'
 require 'webmock/rspec'
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start
 
 FactoryBot.factories.clear
 FactoryBot.reload
